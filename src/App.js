@@ -1,11 +1,11 @@
-import Calculator from './components/Calculator.jsx'
 import './App.css'
+import {Calculadora} from "./components/Calculadora/Calculadora";
 
 function App() {
   return (
     <div className='App'>
       <h1>Calculadora React</h1>
-      <Calculator/>
+      <Calculadora/>
     </div>
   )
 }

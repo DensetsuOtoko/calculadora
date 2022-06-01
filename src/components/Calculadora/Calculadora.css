@@ -5,10 +5,9 @@ button {
   border: none;
   border-radius: 2em;
   margin: 0.2em;
-
-
 }
-#btnZero{
+
+.btnZero{
   width: 6.4em;
   height: 2.85em;
 }
@@ -18,22 +17,21 @@ button:hover {
 }
 
 .wrapper {
-
   background-color: black;
   border-radius: 1em;
   padding:1em;
 }
 
 .orange{
-background-color: #FF9500 ;
-color: white;
-
+  background-color: #FF9500 ;
+  color: white;
 }
+
 .gray{
-background-color:#505050;
-color:white;
-
+  background-color:#505050;
+  color:white;
 }
+
 .result{
   display: flex;
   justify-content: right;
