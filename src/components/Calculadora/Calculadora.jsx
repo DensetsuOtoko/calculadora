@@ -1,15 +1,15 @@
-import React from 'react'
-import './Calculadora.css'
+import React from 'react';
+import './Calculadora.css';
 import {Box} from '@mui/material';
-import {ContainerComponente} from "../ContainerComponente/ContainerComponente";
-import {Botao} from "../Botao/Botao";
+import {ContainerComponente} from '../ContainerComponente/ContainerComponente';
+import {Botao} from '../Botao/Botao';
 
 export class Calculadora extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       num: 0,
-    }
+    };
   }
 
   inputNum = (e) => {
@@ -22,19 +22,19 @@ export class Calculadora extends React.Component {
       state.num += input;
     }
     this.setState(state);
-  }
+  };
 
   clear = () => {
     const state = this.state;
     state.num = 0;
     this.setState(state);
-  }
+  };
 
   porcentagem = () => {
     const state = this.state;
     state.num = (this.state.num / 100);
     this.setState(state);
-  }
+  };
 
   changeSign = () => {
     const state = this.state;
@@ -45,14 +45,15 @@ export class Calculadora extends React.Component {
       state.num = Math.abs(this.state.num);
     }
     this.setState(state);
-  }
+  };
 
   calculate = () => {
     const state = this.state;
+    // eslint-disable-next-line no-eval
+    /* como é um código simples que não faz requisições ao banco de dados não é necessário criar validações aqui */
     state.num = eval(state.num);
     this.setState(state);
-  }
-
+  };
 
   render() {
     return (
@@ -68,7 +69,7 @@ export class Calculadora extends React.Component {
         <Botao titulo={'7'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'8'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'9'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'X'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'*'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'4'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'5'} className='gray' onClick={this.inputNum}/>
@@ -84,6 +85,7 @@ export class Calculadora extends React.Component {
         <Botao titulo={'.'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'='} className='orange' onClick={this.calculate}/>
       </ContainerComponente>
-    )}
+    );
+}
 
 }

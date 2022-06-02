@@ -1,10 +1,10 @@
-import React from 'react'
-import Container from "@mui/material/Container";
+import React from 'react';
+import Container from '@mui/material/Container';
 
 export class ContainerComponente extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
@@ -14,6 +14,6 @@ export class ContainerComponente extends React.Component {
           {this.props.children}
         </div>
       </Container>
-    )
+    );
   }
 }

@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export class Botao extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
@@ -13,12 +13,14 @@ export class Botao extends React.Component {
       <button className={className} onClick={onClick}>
         {titulo}
       </button>
-    )
+    );
   }
 
   static propTypes = {
     titulo: PropTypes.string.isRequired,
+    // eslint-disable-next-line react/require-default-props
     className: PropTypes.string,
+    // eslint-disable-next-line react/require-default-props
     onClick: PropTypes.func,
   };
 }
