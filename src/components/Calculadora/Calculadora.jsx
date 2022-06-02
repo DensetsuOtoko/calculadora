@@ -9,19 +9,17 @@ export class Calculadora extends React.Component {
     super(props);
     this.state = {
       num: 0,
-      oldNum: 0,
-      operator: null
     }
   }
 
   inputNum = (e) => {
     const state = this.state;
-    let input = Number(e.target.innerText);
+    let input = e.target.innerText.toLowerCase();
     if (this.state.num === 0) {
       state.num = input;
     }
     else {
-      state.num = this.state.num + input;
+      state.num += input;
     }
     this.setState(state);
   }
@@ -49,31 +47,9 @@ export class Calculadora extends React.Component {
     this.setState(state);
   }
 
-  operationHandler = (e) => {
-    const state = this.state;
-    state.operator = e.target.innerText;
-    state.oldNum = this.state.num;
-    state.num = 0;
-    this.setState(state);
-  }
-
   calculate = () => {
     const state = this.state;
-    if(this.state.operator === "/"){
-      state.num = this.state.oldNum / this.state.num;
-    }
-    else if(this.state.operator === "*"){
-      state.num = this.state.oldNum * this.state.num;
-    }
-    else if(this.state.operator === "-"){
-      state.num = this.state.oldNum - this.state.num;
-    }
-    else if(this.state.operator === "+"){
-      state.num = this.state.oldNum + this.state.num;
-    }
-
-    console.log("calculou!!!")
-    console.log(this.state)
+    state.num = eval(state.num);
     this.setState(state);
   }
 
@@ -87,25 +63,25 @@ export class Calculadora extends React.Component {
         <Botao titulo={'+/-'} onClick={this.changeSign}/>
         <Botao titulo={'AC'} onClick={this.clear}/>
         <Botao titulo={'%'} onClick={this.porcentagem}/>
-        <Botao titulo={'/'} className='orange' onClick={this.operationHandler}/>
+        <Botao titulo={'/'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'7'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'8'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'9'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'X'} className='orange' onClick={this.operationHandler}/>
+        <Botao titulo={'X'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'4'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'5'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'6'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'-'} className='orange' onClick={this.operationHandler}/>
+        <Botao titulo={'-'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'1'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'2'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'3'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'+'} className='orange' onClick={this.operationHandler}/>
+        <Botao titulo={'+'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'0'} className='btnZero' onClick={this.inputNum}/>
-        <Botao titulo={'.'} className='gray'/>
+        <Botao titulo={'.'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'='} className='orange' onClick={this.calculate}/>
       </ContainerComponente>
     )}
