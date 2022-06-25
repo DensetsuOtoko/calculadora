@@ -14,7 +14,7 @@ export class Calculadora extends React.Component {
 
   inputNum = (e) => {
     const state = this.state;
-    let input = e.target.innerText.toLowerCase();
+    let input = e.target.innerText.toLowerCase().replaceAll('x', '*');
     if (this.state.num === 0) {
       state.num = input;
     }
@@ -61,15 +61,15 @@ export class Calculadora extends React.Component {
         <Box m={(12)} />
         <h1 className="result">{this.state.num}</h1>
 
-        <Botao titulo={'+/-'} onClick={this.changeSign}/>
         <Botao titulo={'AC'} onClick={this.clear}/>
+        <Botao titulo={'+/-'} onClick={this.changeSign}/>
         <Botao titulo={'%'} onClick={this.porcentagem}/>
         <Botao titulo={'/'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'7'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'8'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'9'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'*'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'x'} className='orange' onClick={this.inputNum}/>
 
         <Botao titulo={'4'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'5'} className='gray' onClick={this.inputNum}/>
@@ -85,6 +85,7 @@ export class Calculadora extends React.Component {
         <Botao titulo={'.'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'='} className='orange' onClick={this.calculate}/>
       </ContainerComponente>
+
     );
 }
 
