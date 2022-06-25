@@ -1,7 +1,6 @@
 import './App.css';
 import {Calculadora} from './components/Calculadora/Calculadora';
 import React from 'react';
-
 export class App extends React.Component {
   constructor(props) {
     super(props);

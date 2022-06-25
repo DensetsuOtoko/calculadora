@@ -3,6 +3,8 @@ import './Calculadora.css';
 import {Box} from '@mui/material';
 import {ContainerComponente} from '../ContainerComponente/ContainerComponente';
 import {Botao} from '../Botao/Botao';
+const arrOperacoes = ['*', '/', '+', '.', '-'];
+
 
 export class Calculadora extends React.Component {
   constructor(props) {
@@ -15,7 +17,8 @@ export class Calculadora extends React.Component {
   inputNum = (e) => {
     const state = this.state;
     let input = e.target.innerText.toLowerCase().replaceAll('x', '*');
-    if (this.state.num === 0) {
+     if (this.state.num === 0 || (arrOperacoes.includes(this.state.num[state.num.length - 1]) && arrOperacoes.includes(input))
+      ){
       state.num = input;
     }
     else {
