@@ -8,9 +8,9 @@ export class Botao extends React.Component {
   }
 
   render() {
-    const { className, onClick, titulo } = this.props;
+    const { className, onClick, titulo, disabled = false } = this.props;
     return (
-      <button className={className} onClick={onClick}>
+      <button className={className} onClick={onClick} disabled={disabled}>
         {titulo}
       </button>
     );
@@ -22,5 +22,7 @@ export class Botao extends React.Component {
     className: PropTypes.string,
     // eslint-disable-next-line react/require-default-props
     onClick: PropTypes.func,
+    // eslint-disable-next-line react/require-default-props
+    disabled: PropTypes.bool,
   };
 }

@@ -5,19 +5,21 @@ import {ContainerComponente} from '../ContainerComponente/ContainerComponente';
 import {Botao} from '../Botao/Botao';
 const arrOperacoes = ['*', '/', '+', '.', '-'];
 
-
 export class Calculadora extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       num: 0,
+      numAnt: 0,
     };
   }
 
   inputNum = (e) => {
     const state = this.state;
     let input = e.target.innerText.toLowerCase().replaceAll('x', '*');
-     if (this.state.num === 0 || (arrOperacoes.includes(this.state.num[state.num.length - 1]) && arrOperacoes.includes(input))
+     if (
+       this.state.num === 0 ||
+       (arrOperacoes.includes(this.state.num[state.num.length - 1]) && arrOperacoes.includes(input))
       ){
       state.num = input;
     }
@@ -59,34 +61,39 @@ export class Calculadora extends React.Component {
   };
 
   render() {
+    const disabled = !this.state.num;
+    const classNameOrange = !disabled ? 'orange' : '';
+    const classNameGray = !disabled ? 'gray' : '';
+
+    console.log('state', this.state);
     return (
       <ContainerComponente>
         <Box m={(12)} />
         <h1 className="result">{this.state.num}</h1>
 
-        <Botao titulo={'AC'} onClick={this.clear}/>
-        <Botao titulo={'+/-'} onClick={this.changeSign}/>
-        <Botao titulo={'%'} onClick={this.porcentagem}/>
-        <Botao titulo={'/'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'AC'} className={classNameOrange} disabled={disabled} onClick={this.clear}/>
+        <Botao titulo={'+/-'} className={classNameOrange} disabled={disabled} onClick={this.changeSign}/>
+        <Botao titulo={'%'} className={classNameOrange} disabled={disabled} onClick={this.porcentagem}/>
+        <Botao titulo={'/'} className={classNameOrange} disabled={disabled} onClick={this.inputNum}/>
 
         <Botao titulo={'7'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'8'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'9'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'x'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'x'} className={classNameOrange} disabled={disabled} onClick={this.inputNum}/>
 
         <Botao titulo={'4'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'5'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'6'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'-'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'-'} className={classNameOrange} disabled={disabled} onClick={this.inputNum}/>
 
         <Botao titulo={'1'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'2'} className='gray' onClick={this.inputNum}/>
         <Botao titulo={'3'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'+'} className='orange' onClick={this.inputNum}/>
+        <Botao titulo={'+'} className={classNameOrange} disabled={disabled} onClick={this.inputNum}/>
 
-        <Botao titulo={'0'} className='btnZero' onClick={this.inputNum}/>
-        <Botao titulo={'.'} className='gray' onClick={this.inputNum}/>
-        <Botao titulo={'='} className='orange' onClick={this.calculate}/>
+        <Botao titulo={'0'} className="btnZero" disabled={disabled} onClick={this.inputNum}/>
+        <Botao titulo={'.'} className={classNameGray} disabled={disabled} onClick={this.inputNum}/>
+        <Botao titulo={'='} className={classNameGray} disabled={disabled} onClick={this.calculate}/>
       </ContainerComponente>
 
     );
