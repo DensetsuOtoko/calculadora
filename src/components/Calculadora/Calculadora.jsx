@@ -22,7 +22,8 @@ export class Calculadora extends React.Component {
       state.num = input;
     }
     else if (ARR_OPERACOES.includes(this.state.num[state.num.length - 1]) && ARR_OPERACOES.includes(input)) {
-      state.num = state.num.replace(state.num[state.num.length - 1], input);
+      const num = state.num.substring(0, state.num.length - 1);
+      state.num = num + input;
     }
     else {
       state.num += input;
